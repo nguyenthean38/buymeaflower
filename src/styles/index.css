@@ -1,0 +1,278 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================
+   Buy Me a Flower — design token
+   Màu chủ đạo: hồng cánh sen + điểm nhấn xanh lá (leaf) và
+   vàng nhuỵ (gold) trên nền giấy kem ấm. Mọi màu đi qua biến
+   CSS để đổi sáng / tối ở một chỗ. Trang cá nhân của nhà sáng
+   tạo ghi đè --page bằng màu chủ đề riêng.
+   ========================================================== */
+:root {
+  --c-canvas: #fdf9f4;
+  --c-side: #faf3ec;
+  --c-surface: #ffffff;
+  --c-subtle: #f7f0e9;
+  --c-hover: #f1e7de;
+  --c-press: #e9dcd1;
+  --c-line: #efe4da;
+  --c-line-strong: #dfd0c3;
+
+  --c-fg: #2b1622;
+  --c-dim: #4d3542;
+  --c-muted: #7d6570;
+  --c-faint: #b09aa2;
+
+  --c-brand-50: #fff0f5;
+  --c-brand-100: #ffe0eb;
+  --c-brand-200: #ffc2d7;
+  --c-brand-300: #ff96b9;
+  --c-brand-400: #f66699;
+  --c-brand-500: #e83e7c;
+  --c-brand-600: #cf2867;
+  --c-brand-700: #a81d53;
+  --c-brand-ink: #c8245f;
+
+  --c-ice: #2f9e6e;
+  --c-ice-soft: #e3f5ec;
+  --c-gold: #e0a019;
+  --c-gold-soft: #fdf2d6;
+
+  --c-pos: #1f9a67;
+  --c-pos-soft: #e2f5ea;
+  --c-neg: #d43d3d;
+  --c-neg-soft: #fde9e7;
+  --c-warn: #b8730c;
+  --c-warn-soft: #fcf0d9;
+  --c-info: #3a6fd0;
+  --c-info-soft: #e7eefb;
+
+  --c-chart-1: #e83e7c;
+  --c-chart-2: #2f9e6e;
+  --c-chart-3: #f2b632;
+  --c-chart-4: #9a6be0;
+  --c-chart-5: #f08a4b;
+  --c-chart-6: #b09aa2;
+
+  --page: var(--c-brand-500);
+
+  --shadow-xs: 0 1px 2px rgba(60, 24, 40, .05);
+  --shadow-sm: 0 1px 2px rgba(60, 24, 40, .04), 0 2px 8px -2px rgba(60, 24, 40, .08);
+  --shadow-md: 0 2px 4px rgba(60, 24, 40, .04), 0 12px 32px -12px rgba(60, 24, 40, .18);
+  --shadow-lg: 0 4px 10px rgba(60, 24, 40, .05), 0 32px 64px -24px rgba(60, 24, 40, .3);
+
+  color-scheme: light;
+}
+
+.dark {
+  --c-canvas: #170f14;
+  --c-side: #1c1219;
+  --c-surface: #21161d;
+  --c-subtle: #2a1c25;
+  --c-hover: #33232d;
+  --c-press: #3d2a36;
+  --c-line: #33232d;
+  --c-line-strong: #4a3541;
+
+  --c-fg: #f9edf2;
+  --c-dim: #dcc7d0;
+  --c-muted: #a88e99;
+  --c-faint: #735b66;
+
+  --c-brand-50: #33141f;
+  --c-brand-100: #47192a;
+  --c-brand-200: #66213b;
+  --c-brand-300: #a02e59;
+  --c-brand-400: #d94780;
+  --c-brand-500: #f2609a;
+  --c-brand-600: #ff86b3;
+  --c-brand-700: #ffb3cf;
+  --c-brand-ink: #ff8fb8;
+
+  --c-ice: #4fc592;
+  --c-ice-soft: #142a20;
+  --c-gold: #efb94a;
+  --c-gold-soft: #2c2311;
+
+  --c-pos: #4fc592;
+  --c-pos-soft: #142a20;
+  --c-neg: #ff7a70;
+  --c-neg-soft: #301715;
+  --c-warn: #f0aa3c;
+  --c-warn-soft: #2b2112;
+  --c-info: #7ba3f5;
+  --c-info-soft: #162036;
+
+  --c-chart-1: #f2609a;
+  --c-chart-2: #4fc592;
+  --c-chart-3: #f5c452;
+  --c-chart-4: #b28df0;
+  --c-chart-5: #f5a06a;
+  --c-chart-6: #a88e99;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4), 0 2px 8px -2px rgba(0, 0, 0, .5);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, .35), 0 12px 32px -12px rgba(0, 0, 0, .7);
+  --shadow-lg: 0 4px 10px rgba(0, 0, 0, .4), 0 32px 64px -24px rgba(0, 0, 0, .85);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  --color-canvas: var(--c-canvas);
+  --color-side: var(--c-side);
+  --color-surface: var(--c-surface);
+  --color-subtle: var(--c-subtle);
+  --color-hover: var(--c-hover);
+  --color-press: var(--c-press);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+
+  --color-fg: var(--c-fg);
+  --color-dim: var(--c-dim);
+  --color-muted: var(--c-muted);
+  --color-faint: var(--c-faint);
+
+  --color-brand-50: var(--c-brand-50);
+  --color-brand-100: var(--c-brand-100);
+  --color-brand-200: var(--c-brand-200);
+  --color-brand-300: var(--c-brand-300);
+  --color-brand-400: var(--c-brand-400);
+  --color-brand-500: var(--c-brand-500);
+  --color-brand-600: var(--c-brand-600);
+  --color-brand-700: var(--c-brand-700);
+  --color-brand-ink: var(--c-brand-ink);
+  --color-brand: var(--c-brand-500);
+  --color-page: var(--page);
+
+  --color-ice: var(--c-ice);
+  --color-ice-soft: var(--c-ice-soft);
+  --color-gold: var(--c-gold);
+  --color-gold-soft: var(--c-gold-soft);
+  --color-pos: var(--c-pos);
+  --color-pos-soft: var(--c-pos-soft);
+  --color-neg: var(--c-neg);
+  --color-neg-soft: var(--c-neg-soft);
+  --color-warn: var(--c-warn);
+  --color-warn-soft: var(--c-warn-soft);
+  --color-info: var(--c-info);
+  --color-info-soft: var(--c-info-soft);
+
+  --color-chart-1: var(--c-chart-1);
+  --color-chart-2: var(--c-chart-2);
+  --color-chart-3: var(--c-chart-3);
+  --color-chart-4: var(--c-chart-4);
+  --color-chart-5: var(--c-chart-5);
+  --color-chart-6: var(--c-chart-6);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --radius-card: 14px;
+  --radius-ctl: 10px;
+
+  --ease-out-soft: cubic-bezier(.22, 1, .36, 1);
+
+  --animate-fade-in: fade-in .18s ease-out;
+  --animate-pop-in: pop-in .22s var(--ease-out-soft);
+  --animate-slide-in: slide-in .28s var(--ease-out-soft);
+  --animate-slide-up: slide-up .28s var(--ease-out-soft);
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-blink: blink 1s steps(2) infinite;
+  --animate-float: float-y 6s ease-in-out infinite;
+  --animate-sway: sway 5s ease-in-out infinite;
+  --animate-petal: petal-fall 2.6s ease-in forwards;
+  --animate-bloom: bloom .5s var(--ease-out-soft);
+}
+
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+@keyframes pop-in { from { opacity: 0; transform: translateY(6px) scale(.98) } to { opacity: 1; transform: none } }
+@keyframes slide-in { from { opacity: .4; transform: translateX(24px) } to { opacity: 1; transform: none } }
+@keyframes slide-up { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
+@keyframes shimmer { from { background-position: -400px 0 } to { background-position: 400px 0 } }
+@keyframes blink { to { visibility: hidden } }
+@keyframes sway { 0%, 100% { transform: rotate(-4deg) } 50% { transform: rotate(4deg) } }
+@keyframes petal-fall { 0% { opacity: 0; transform: translate3d(0, -10vh, 0) rotate(0) } 10% { opacity: 1 } 100% { opacity: 0; transform: translate3d(var(--dx, 40px), 105vh, 0) rotate(540deg) } }
+@keyframes bloom { from { opacity: 0; transform: scale(.4) rotate(-40deg) } to { opacity: 1; transform: none } }
+@keyframes float-y { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+
+/* ---------- Nền tảng ---------- */
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-canvas text-fg font-sans antialiased;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  ::selection { background: var(--c-brand-200); color: var(--c-fg); }
+  :focus-visible { outline: 2px solid var(--c-brand-400); outline-offset: 2px; border-radius: 6px; }
+  button, [role='button'] { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  input, textarea, select { font: inherit; color: inherit; }
+  input::placeholder, textarea::placeholder { color: var(--c-faint); }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--c-line-strong); border-radius: 99px; border: 3px solid transparent; background-clip: content-box; }
+  ::-webkit-scrollbar-track { background: transparent; }
+}
+
+/* ---------- Tiện ích typography ---------- */
+@utility num { font-variant-numeric: tabular-nums; }
+@utility ds-display { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.04; font-weight: 800; letter-spacing: -.04em; }
+@utility ds-h1 { font-size: 26px; line-height: 1.25; font-weight: 650; letter-spacing: -.02em; }
+@utility ds-h2 { font-size: 18px; line-height: 1.35; font-weight: 600; letter-spacing: -.012em; }
+@utility ds-h3 { font-size: 15px; line-height: 1.4; font-weight: 600; letter-spacing: -.006em; }
+@utility ds-label { font-size: 11px; line-height: 1.4; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--c-muted); }
+@utility ds-caption { font-size: 12.5px; line-height: 1.45; color: var(--c-muted); }
+@utility ds-amount { font-size: 28px; line-height: 1.15; font-weight: 600; letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+
+/* ---------- Thành phần lặp lại ---------- */
+@utility card { min-width: 0; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: 14px; box-shadow: var(--shadow-xs); }
+@utility hairline { border-color: var(--c-line); }
+@utility skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--c-subtle) 0%, var(--c-hover) 50%, var(--c-subtle) 100%);
+  background-size: 800px 100%;
+  animation: var(--animate-shimmer);
+}
+@utility no-scrollbar { scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
+@utility dotted-underline { text-decoration: underline dotted var(--c-faint); text-underline-offset: 4px; }
+@utility dot-grid {
+  background-image: radial-gradient(var(--c-line-strong) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+@utility text-crystal {
+  background: linear-gradient(100deg, var(--c-brand-500) 10%, #f08a4b 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility bg-crystal { background: linear-gradient(120deg, var(--c-brand-500), #f08a4b); }
+
+/* ---------- Trang cá nhân: màu chủ đề của nhà sáng tạo ---------- */
+@utility bg-page-soft { background: color-mix(in srgb, var(--page) 12%, var(--c-surface)); }
+@utility border-page-soft { border-color: color-mix(in srgb, var(--page) 35%, var(--c-surface)); }
+@utility prose-post {
+  font-size: 15px; line-height: 1.75; color: var(--c-dim);
+  & h2 { font-size: 20px; font-weight: 700; color: var(--c-fg); margin: 1.2em 0 .4em; }
+  & h3 { font-size: 17px; font-weight: 650; color: var(--c-fg); margin: 1.1em 0 .3em; }
+  & p { margin: .7em 0; }
+  & ul { list-style: disc; padding-left: 1.3em; margin: .6em 0; }
+  & ol { list-style: decimal; padding-left: 1.3em; margin: .6em 0; }
+  & a { color: var(--c-brand-ink); text-decoration: underline; text-underline-offset: 3px; }
+  & blockquote { border-left: 3px solid var(--c-brand-300); background: var(--c-subtle); padding: .6em 1em; border-radius: 0 10px 10px 0; margin: .9em 0; }
+  & hr { border-color: var(--c-line); margin: 1.4em 0; }
+  & code { font-family: var(--font-mono); font-size: .9em; background: var(--c-subtle); padding: .1em .35em; border-radius: 5px; }
+  & img { border-radius: 12px; margin: 1em 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
