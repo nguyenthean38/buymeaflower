@@ -10,6 +10,8 @@
 
 > ⚠️ Đây là **sản phẩm demo giao diện** do [Ntahien Tech](https://ntahientech.com) thiết kế và lập trình. Các nhà sáng tạo, người ủng hộ, ngân hàng, ví điện tử và cổng thanh toán trong bản demo đều **hư cấu**; toàn bộ dữ liệu là **mô phỏng** và không có khoản tiền thật nào được chuyển. Ảnh minh hoạ thuộc giấy phép CC0 (xem [docs/IMAGE_CREDITS.md](docs/IMAGE_CREDITS.md)); người trong ảnh là người mẫu ảnh stock, không liên quan đến nhân vật trong bản demo.
 
+🔗 **Demo:** https://buymeaflower.vercel.app — bấm **"Vào bằng tài khoản demo"** ở trang đăng nhập (hoặc mở thẳng [/quan-ly?demo=1](https://buymeaflower.vercel.app/quan-ly?demo=1)).
+
 ![Trang giới thiệu](docs/screenshots/01-gioi-thieu.jpg)
 
 ## Thử nhanh
